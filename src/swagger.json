@@ -1,0 +1,320 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Challenge 2 Documentation",
+        "description": "This project was developed to study.",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Walison Fernandes",
+            "email": "walisonvfernandes@hotmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create a new user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "User Name Sample",
+                                    "email": "user@mailsample.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "update_at": {
+                                            "type": "date"
+                                        }
+                                    },
+                                    "example": {
+                                        "admin": false,
+	                                    "id": "9d63c816-b446-4724-9299-32e8ce6f6eb7",
+                                        "name": "User Name Sample",
+                                        "description": "user@mailsample.com",
+                                        "created_at": "2023-01-08T18:12:06.553Z",
+	                                    "update_at": "2023-01-08T18:12:06.553Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "error": "User already exists"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "List all users",
+                "description": "List all users",
+                "parameters": {
+                    "in": "header",
+                    "name": "user_id",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": "true",
+                    "description": "The user ID"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "update_at": {
+                                            "type": "date"
+                                        }
+                                    },
+                                    "example": {
+                                        "admin": false,
+	                                    "id": "9d63c816-b446-4724-9299-32e8ce6f6eb7",
+                                        "name": "User Name Sample",
+                                        "description": "user@mailsample.com",
+                                        "created_at": "2023-01-08T18:12:06.553Z",
+	                                    "update_at": "2023-01-08T18:12:06.553Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "error": "ID user not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "Show user profile",
+                "description": "Show user profile",
+                "parameters": {
+                    "in": "path",
+                    "name": "user_id",
+                    "required": "true",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "description": "The user ID"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "update_at": {
+                                            "type": "date"
+                                        }
+                                    },
+                                    "example": {
+                                        "admin": false,
+	                                    "id": "9d63c816-b446-4724-9299-32e8ce6f6eb7",
+                                        "name": "User Name Sample",
+                                        "description": "user@mailsample.com",
+                                        "created_at": "2023-01-08T18:12:06.553Z",
+	                                    "update_at": "2023-01-08T18:12:06.553Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "error": "ID user not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "patch": {
+                "tags": ["Users"],
+                "summary": "Show user profile",
+                "description": "Show user profile",
+                "parameters": {
+                    "in": "path",
+                    "name": "user_id",
+                    "required": "true",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "description": "The user ID"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "date"
+                                        },
+                                        "update_at": {
+                                            "type": "date"
+                                        }
+                                    },
+                                    "example": {
+                                        "admin": true,
+	                                    "id": "9d63c816-b446-4724-9299-32e8ce6f6eb7",
+                                        "name": "User Name Sample",
+                                        "description": "user@mailsample.com",
+                                        "created_at": "2023-01-08T18:12:06.553Z",
+	                                    "update_at": "2023-01-08T18:12:06.553Z"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "error": "ID user not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
