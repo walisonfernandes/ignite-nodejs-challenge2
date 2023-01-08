@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 
 import { TurnUserAdminUseCase } from "./TurnUserAdminUseCase";
 
-// Está faltando configurar a mensagem de erro recebida no useCase
-
 class TurnUserAdminController {
   constructor(private turnUserAdminUseCase: TurnUserAdminUseCase) {}
 
